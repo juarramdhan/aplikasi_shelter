@@ -95,7 +95,6 @@ class HomeView extends GetView<HomeController> {
                       itemCount: 10,
                       itemBuilder: (context, index) {
                         return Container(
-                          padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 20),
                           width: double.infinity,
@@ -103,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                   blurRadius: 3,
                                   color: Colors.grey,
@@ -111,33 +110,57 @@ class HomeView extends GetView<HomeController> {
                             ],
                           ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                height: 80,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage("assets/images/mie.jpg"),
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: const DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/mie.jpg"),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    SizedBox(
+                                      width: 150,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: const [
+                                          Text("Mie Get"),
+                                          Text(
+                                            "Mie yang digandrungi semua orang",
+                                            style: TextStyle(fontSize: 10),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      color: primaryColor,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(10),
+                                          bottomRight: Radius.circular(10))),
+                                  padding: const EdgeInsets.all(15),
+                                  child: const Center(
+                                    child: Text("Pesan"),
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              SizedBox(
-                                width: 150,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Mie Get"),
-                                    Text(
-                                      "Mie yang digandrungi semua orang",
-                                      style: TextStyle(fontSize: 10),
-                                    )
-                                  ],
-                                ),
-                              )
                             ],
                           ),
                         );
