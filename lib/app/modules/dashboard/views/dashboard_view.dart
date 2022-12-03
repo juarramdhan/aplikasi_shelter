@@ -32,12 +32,12 @@ class DashboardView extends GetView<DashboardController> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'Business',
+              icon: Icon(Icons.person),
+              label: 'Profile',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              label: 'School',
+              icon: Icon(Icons.history),
+              label: 'Riwayat',
             ),
           ],
           currentIndex: controller.selectedIndex,
