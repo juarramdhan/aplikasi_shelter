@@ -73,8 +73,40 @@ class LoginView extends GetView<LoginController> {
                           backgroundColor: primaryColor,
                         ),
                         onPressed: () {},
-                        child: const Text("Login"),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(color: Colors.grey.shade700),
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset("assets/icons/google.png"),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "Masuk dengan Google",
+                              style: TextStyle(color: Colors.grey.shade700),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
                     ),
                   ],
                 ),
