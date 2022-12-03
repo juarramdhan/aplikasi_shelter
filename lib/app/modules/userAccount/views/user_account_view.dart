@@ -56,9 +56,9 @@ class UserAccountView extends GetView<UserAccountController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 50, top: 400),
+                margin: EdgeInsets.only(left: 15, top: 400),
                 height: 200,
-                width: 300,
+                width: 380,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Color.fromARGB(255, 250, 250, 250)),
