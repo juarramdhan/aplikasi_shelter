@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:aplikasi_shelter_bima/app/routes/app_pages.dart';
 import 'package:aplikasi_shelter_bima/app/utils/appColor.dart';
 import 'package:flutter/material.dart';
 
@@ -72,14 +71,16 @@ class LoginView extends GetView<LoginController> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: primaryColor,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Routes.DASHBOARD);
+                        },
                         child: Text(
                           "Login",
                           style: TextStyle(color: Colors.grey.shade700),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     SizedBox(
@@ -94,7 +95,7 @@ class LoginView extends GetView<LoginController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/icons/google.png"),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Text(
@@ -105,9 +106,21 @@ class LoginView extends GetView<LoginController> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Belum punya akun?"),
+                          TextButton(
+                            onPressed: () {},
+                            child: const Text("Daftar"),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
