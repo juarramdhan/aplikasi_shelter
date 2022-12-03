@@ -91,6 +91,7 @@ class HomeView extends GetView<HomeController> {
                     height: 20,
                   ),
                   ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: 10,
                       itemBuilder: (context, index) {
@@ -131,7 +132,7 @@ class HomeView extends GetView<HomeController> {
                                       width: 20,
                                     ),
                                     SizedBox(
-                                      width: 150,
+                                      width: 70,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
