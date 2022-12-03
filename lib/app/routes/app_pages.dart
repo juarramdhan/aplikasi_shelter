@@ -18,11 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-<<<<<<< HEAD
   static const INITIAL = Routes.USER_ACCOUNT;
-=======
-  static const INITIAL = Routes.LOGIN;
->>>>>>> 64c27dfbd3f4d342cc87ce52a2717fbb36d733a0
 
   static final routes = [
     GetPage(
