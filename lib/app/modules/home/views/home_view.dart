@@ -131,11 +131,13 @@ class HomeView extends GetView<HomeController> {
                                     const SizedBox(
                                       width: 20,
                                     ),
-                                    SizedBox(
+                                    Container(
                                       width: 70,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: const [
                                           Text("Mie Get"),
                                           Text(
