@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "78958614773",
+    "project_id": "aplikasi-kasir-shelter-bima",
+    "storage_bucket": "aplikasi-kasir-shelter-bima.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78958614773:android:0f8797d3636c0411520dbc",
+        "android_client_info": {
+          "package_name": "com.example.aplikasi_shelter_bima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78958614773-kv1tofh4ba535afhklk8j1j2ob4lp1uv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcPXMVkS_ZytyWf4XQJXk0D37ILBh027U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78958614773-kv1tofh4ba535afhklk8j1j2ob4lp1uv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
