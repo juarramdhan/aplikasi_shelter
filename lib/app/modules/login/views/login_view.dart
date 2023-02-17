@@ -1,5 +1,7 @@
+import 'package:aplikasi_shelter_bima/app/data/authcontroller..dart';
 import 'package:aplikasi_shelter_bima/app/routes/app_pages.dart';
 import 'package:aplikasi_shelter_bima/app/utils/appColor.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,7 +9,12 @@ import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+  final authController = Get.find<AuthController>();
+  final _pCo = TextEditingController();
+  final _uCo = TextEditingController();
+  final _a = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +40,7 @@ class LoginView extends GetView<LoginController> {
                             fontWeight: FontWeight.w700),
                         children: [
                           TextSpan(
-                            text: "Sign in to continue!",
+                            text: "Warung Mamah Bima",
                             style: TextStyle(
                                 color: Colors.black54,
                                 fontSize: 22,
@@ -45,7 +52,8 @@ class LoginView extends GetView<LoginController> {
                     const SizedBox(
                       height: 70,
                     ),
-                    const TextField(
+                    TextField(
+                      controller: _uCo,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Username',
@@ -54,8 +62,9 @@ class LoginView extends GetView<LoginController> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextField(
+                    TextField(
                       obscureText: true,
+                      controller: _pCo,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Password',
@@ -71,8 +80,17 @@ class LoginView extends GetView<LoginController> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: primaryColor,
                         ),
-                        onPressed: () {
-                          Get.toNamed(Routes.DASHBOARD);
+                        // onPressed: () {
+                        //   // Get.toNamed(Routes.DASHBOARD);
+
+                        // },
+                        onPressed: () async {
+                          final user = await _a.signInWithEmailAndPassword(
+                              email: _uCo.text, password: _pCo.text);
+                          if (user != null) {
+                            // print(email);
+                            Get.offAllNamed(Routes.ADMIN);
+                          }
                         },
                         child: Text(
                           "Login",
@@ -90,7 +108,9 @@ class LoginView extends GetView<LoginController> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          authController.signInWithGoogle();
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -115,8 +135,10 @@ class LoginView extends GetView<LoginController> {
                         children: [
                           const Text("Belum punya akun?"),
                           TextButton(
-                            onPressed: () {},
-                            child: const Text("Daftar"),
+                            onPressed: () {
+                              authController.signInWithGoogle();
+                            },
+                            child: const Text("Daftar dg Email"),
                           ),
                         ],
                       ),

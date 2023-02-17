@@ -1,4 +1,8 @@
 import 'package:aplikasi_shelter_bima/app/data/authcontroller..dart';
+import 'package:aplikasi_shelter_bima/app/modules/adminMenu/bindings/admin_menu_binding.dart';
+import 'package:aplikasi_shelter_bima/app/modules/adminMenu/controllers/admin_menu_controller.dart';
+import 'package:aplikasi_shelter_bima/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:aplikasi_shelter_bima/app/modules/home/controllers/home_controller.dart';
 import 'package:aplikasi_shelter_bima/firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +18,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Get.put(AuthController(), permanent: true);
+  Get.put(HomeController(), permanent: true);
+  Get.put(DashboardController(), permanent: true);
+  Get.put(AdminMenuController(), permanent: true);
   runApp(StreamBuilder<User?>(
     stream: FirebaseAuth.instance.authStateChanges(),
     builder: (context, snapshot) {
@@ -23,7 +30,7 @@ Future<void> main() async {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Warung Mamah BIMA",
-        initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+        initialRoute: snapshot.data != null ? Routes.DASHBOARD : Routes.LOGIN,
         getPages: AppPages.routes,
       );
     },

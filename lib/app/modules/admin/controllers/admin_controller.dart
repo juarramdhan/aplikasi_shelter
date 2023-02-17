@@ -1,10 +1,17 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class AdminController extends GetxController {
+  //TODO: Implement AdminController
 
   final count = 0.obs;
-  var tab = 0;
+
+  int selectedIndex = 0;
+
+  void onItemTapped(int index) {
+    selectedIndex = index;
+    update();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,11 +25,6 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-  }
-
-  void changeTabIndex(int index) {
-    tab = index;
-    update();
   }
 
   void increment() => count.value++;

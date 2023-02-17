@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
@@ -23,11 +9,21 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- <base href="$FLUTTER_BASE_HREF"> -->
+  <base href="/">
   <meta name="apple-mobile-web-app-title" content="aplikasi_shelter_bima">
+
+  <!-- local  -->
+  <!-- <meta 
+    name="google-signin-client_id" 
+    content="78958614773-cdk2uqspcmidrl0h34k3bpqnc5n27lfl.apps.googleusercontent.com"
+  > -->
+  <meta name="google-signin-client_id"
+    content="78958614773-licanc89ae85jpibma4thpvgqq8lh73p.apps.googleusercontent.com" />
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>aplikasi_shelter_bima</title>
   <link rel="manifest" href="manifest.json">
@@ -39,20 +35,46 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
+
 <body>
+  <!-- Firebase Auth SDK -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+  <!-- <script defer src="./init-firebase.js"></script> -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCCuSUEkAN50s4DFoVLS4DYv7RFINWl1CY",
+  authDomain: "aplikasi-kasir-shelter-bima.firebaseapp.com",
+  projectId: "aplikasi-kasir-shelter-bima",
+  storageBucket: "aplikasi-kasir-shelter-bima.appspot.com",
+  messagingSenderId: "78958614773",
+  appId: "1:78958614773:web:c34a11a04896398b520dbc",
+  measurementId: "G-13K868G3RM"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         }
-      }).then(function(engineInitializer) {
+      }).then(function (engineInitializer) {
         return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
+      }).then(function (appRunner) {
         return appRunner.runApp();
       });
     });
   </script>
 </body>
+
 </html>

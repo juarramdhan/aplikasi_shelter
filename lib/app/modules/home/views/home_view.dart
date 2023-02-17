@@ -1,4 +1,8 @@
+import 'package:aplikasi_shelter_bima/app/data/halaman/makanan.dart';
+import 'package:aplikasi_shelter_bima/app/data/halaman/minuman.dart';
 import 'package:aplikasi_shelter_bima/app/utils/appColor.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -9,8 +13,8 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return Scaffold(body: GetBuilder<HomeController>(builder: (controller) {
+      return SafeArea(
           child: SingleChildScrollView(
         child: Stack(
           children: [
@@ -43,45 +47,81 @@ class HomeView extends GetView<HomeController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: primaryColor,
-                          ),
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.fastfood,
-                                size: 25,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text("Makanan")
-                            ],
+                        InkWell(
+                          onTap: () {
+                            print("object");
+                            controller.changeTabIndex(0);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: controller.tab == 0
+                                  ? secondColor
+                                  : primaryColor,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.fastfood,
+                                  color: controller.tab == 0
+                                      ? Colors.white
+                                      : Colors.black,
+                                  size: 25,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Makanan",
+                                  style: TextStyle(
+                                    color: controller.tab == 0
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(
                           width: 40,
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: primaryColor,
-                          ),
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.local_drink,
-                                size: 25,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text("Minuman")
-                            ],
+                        InkWell(
+                          onTap: () {
+                            print("object");
+                            controller.changeTabIndex(1);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: controller.tab == 1
+                                  ? secondColor
+                                  : primaryColor,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.local_drink,
+                                  color: controller.tab == 1
+                                      ? Colors.white
+                                      : Colors.black,
+                                  size: 25,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Minuman",
+                                  style: TextStyle(
+                                    color: controller.tab == 1
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -90,90 +130,19 @@ class HomeView extends GetView<HomeController> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          width: double.infinity,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: const [
-                              BoxShadow(
-                                  blurRadius: 3,
-                                  color: Colors.grey,
-                                  offset: Offset(0, 3))
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 80,
-                                      width: 120,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: const DecorationImage(
-                                          image: AssetImage(
-                                              "assets/images/mie.jpg"),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    Container(
-                                      width: 70,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          Text("Mie Get"),
-                                          Text(
-                                            "Mie yang digandrungi semua orang",
-                                            style: TextStyle(fontSize: 10),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                      color: primaryColor,
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(10),
-                                          bottomRight: Radius.circular(10))),
-                                  padding: const EdgeInsets.all(15),
-                                  child: const Center(
-                                    child: Text("Pesan"),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      })
+
+                  //
+                  Container(
+                    child: [Makanan(), Minuman()][controller.tab],
+                  ),
+
+//
                 ],
               ),
             ),
           ],
         ),
-      )),
-    );
+      ));
+    }));
   }
 }

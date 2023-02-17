@@ -101,11 +101,12 @@ class AuthController extends GetxController {
             _userCredential!.user!.metadata.lastSignInTime.toString(),
       });
     }
-    Get.offAllNamed(Routes.HOME);
+    Get.offAllNamed(Routes.USER_ACCOUNT);
   }
 
   Future logout() async {
     await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
     Get.offAllNamed(Routes.LOGIN);
   }
 

@@ -1,4 +1,8 @@
+import 'package:aplikasi_shelter_bima/app/data/authcontroller..dart';
 import 'package:aplikasi_shelter_bima/app/utils/appColor.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,7 +12,9 @@ import 'package:iconify_flutter/icons/bi.dart';
 import '../controllers/user_account_controller.dart';
 
 class UserAccountView extends GetView<UserAccountController> {
-  const UserAccountView({Key? key}) : super(key: key);
+  final authController = Get.find<AuthController>();
+
+  UserAccountView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,14 +42,17 @@ class UserAccountView extends GetView<UserAccountController> {
                           child: Column(
                         children: [
                           Text(
-                            "Juar Ramadhan",
+                            FirebaseAuth.instance.currentUser?.email ==
+                                    'adminkantin@gmail.com'
+                                ? "Admin kantin"
+                                : '${FirebaseAuth.instance.currentUser?.displayName}',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 105, 104, 104),
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "JuarRamadhan@gmail.com",
+                            '${FirebaseAuth.instance.currentUser?.email}',
                             style: TextStyle(
                               color: Color.fromARGB(255, 105, 104, 104),
                             ),
@@ -58,10 +67,11 @@ class UserAccountView extends GetView<UserAccountController> {
                 ),
                 Container(
                   margin: context.isPhone
-                      ? const EdgeInsets.only(right: 50, left: 50, top: 400)
+                      ? const EdgeInsets.only(right: 2, left: 2, top: 300)
                       : const EdgeInsets.only(right: 200, left: 200, top: 400),
-                  height: 200,
-                  width: double.infinity,
+                  height: 400,
+                  // width: ,
+                  // width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Color.fromARGB(255, 250, 250, 250)),
@@ -71,9 +81,10 @@ class UserAccountView extends GetView<UserAccountController> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 40),
+                                left: 2.0, right: 2, top: 40),
                             child: Container(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     crossAxisAlignment:
@@ -82,16 +93,24 @@ class UserAccountView extends GetView<UserAccountController> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        child: Image.asset(
-                                            'assets/images/profile.jpg',
-                                            height: 120),
+                                        child: Image.network(
+                                            FirebaseAuth.instance.currentUser
+                                                        ?.email ==
+                                                    'adminkantin@gmail.com'
+                                                ? "https://firebasestorage.googleapis.com/v0/b/aplikasi-kasir-shelter-bima.appspot.com/o/11362970-removebg-preview.png?alt=media&token=5412cd5f-64b2-4d6c-8716-650b12babff0"
+                                                : '${FirebaseAuth.instance.currentUser?.photoURL}',
+                                            height: 100),
                                       ),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Juar Ramadahan",
+                                            FirebaseAuth.instance.currentUser
+                                                        ?.displayName ==
+                                                    null
+                                                ? "Admin Kantin"
+                                                : '${FirebaseAuth.instance.currentUser?.displayName}',
                                             style: TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 105, 104, 104),
@@ -99,7 +118,7 @@ class UserAccountView extends GetView<UserAccountController> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(
-                                            "Juar@mail.com",
+                                            '${FirebaseAuth.instance.currentUser?.email}',
                                             style: TextStyle(
                                               color: Color.fromARGB(
                                                   255, 105, 104, 104),
@@ -110,6 +129,29 @@ class UserAccountView extends GetView<UserAccountController> {
                                       ),
                                     ],
                                   ),
+                                  InkWell(
+                                    onTap: () {
+                                      authController.logout();
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          color: Color.fromARGB(
+                                              255, 143, 184, 255)),
+                                      child: Center(
+                                        child: Text(
+                                          'Logout',
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 105, 104, 104),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),

@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "78958614773-kv1tofh4ba535afhklk8j1j2ob4lp1uv.apps.googleusercontent.com",
+          "client_id": "78958614773-vif6ge569por9qgdepjo9rman1n8ac5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplikasi_shelter_bima",
+            "certificate_hash": "67e1cae74f488ab6477c140ec5b790525db50df6"
+          }
+        },
+        {
+          "client_id": "78958614773-cdk2uqspcmidrl0h34k3bpqnc5n27lfl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +35,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "78958614773-kv1tofh4ba535afhklk8j1j2ob4lp1uv.apps.googleusercontent.com",
+              "client_id": "78958614773-cdk2uqspcmidrl0h34k3bpqnc5n27lfl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "78958614773-2933jbig1remftg621enku1vn6imrtjv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aplikasiShelterBima"
+              }
             }
           ]
         }
